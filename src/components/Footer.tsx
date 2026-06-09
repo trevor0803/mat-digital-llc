@@ -84,7 +84,7 @@ export default function Footer() {
               {site.location}
             </li>
           </ul>
-          <Link href="/contact" className="btn-accent mt-6">
+          <Link href={site.bookingPath} className="btn-accent mt-6">
             Book a Free Strategy Call
           </Link>
         </div>

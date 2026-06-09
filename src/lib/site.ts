@@ -21,6 +21,7 @@ export const site = {
   location: "West Palm Beach, Florida",
   serviceArea: "Serving clients nationwide from West Palm Beach, FL",
   responseTime: "We reply to every inquiry within 24 hours.",
+  bookingPath: "/book",
 } as const;
 
 export const nav = [
@@ -157,12 +158,14 @@ export const founders = [
     name: "Michael Ullman",
     role: "Co-Founder & Partner",
     initials: "MU",
+    image: "/assets/michael-ullman.jpg",
     bio: "The “M” in MAT. A husband, father, and seasoned performance marketer who has helped manage millions in ad spend. Michael pairs sharp media-buying instincts with real operating experience as a business owner.",
   },
   {
     name: "Trevor Bianco",
     role: "Co-Founder & Partner",
     initials: "TB",
+    image: "/assets/trevor-bianco.jpg",
     bio: "The “T” in MAT. A husband, father, and growth strategist focused on systems, funnels, and automation. Trevor has built and run multiple businesses and brings an operator's eye to every engagement.",
   },
 ] as const;

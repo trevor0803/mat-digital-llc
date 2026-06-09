@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, CalendarCheck } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
@@ -118,18 +119,27 @@ export default function ContactPage() {
                 })}
               </ul>
 
-              <div className="mt-8 flex items-start gap-3 rounded-2xl bg-teal-700/[0.07] p-5">
-                <CalendarCheck
-                  className="mt-0.5 h-5 w-5 shrink-0 text-teal-700"
-                  strokeWidth={1.75}
-                />
-                <p className="text-sm leading-relaxed text-ink-soft">
-                  <span className="font-semibold text-teal-950">
-                    Free 30-minute strategy call.
-                  </span>{" "}
-                  An honest assessment of your current marketing plus a
-                  customized action plan — no pitch, no obligation.
-                </p>
+              <div className="mt-8 rounded-2xl bg-teal-700/[0.07] p-5">
+                <div className="flex items-start gap-3">
+                  <CalendarCheck
+                    className="mt-0.5 h-5 w-5 shrink-0 text-teal-700"
+                    strokeWidth={1.75}
+                  />
+                  <p className="text-sm leading-relaxed text-ink-soft">
+                    <span className="font-semibold text-teal-950">
+                      Prefer to grab a time now?
+                    </span>{" "}
+                    Book a free 30-minute strategy call — an honest assessment of
+                    your marketing plus a customized action plan. No pitch, no
+                    obligation.
+                  </p>
+                </div>
+                <Link
+                  href={site.bookingPath}
+                  className="btn-primary mt-4 w-full"
+                >
+                  Book a Free Strategy Call
+                </Link>
               </div>
             </div>
           </Reveal>

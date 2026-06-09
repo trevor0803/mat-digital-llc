@@ -74,7 +74,7 @@ export default function Header() {
             <Phone className="h-4 w-4" strokeWidth={1.75} />
             {site.phone}
           </a>
-          <Link href="/contact" className="btn-primary">
+          <Link href={site.bookingPath} className="btn-primary">
             Book a Call
           </Link>
         </div>
@@ -123,7 +123,7 @@ export default function Header() {
               <Phone className="h-4 w-4" strokeWidth={1.75} />
               {site.phone}
             </a>
-            <Link href="/contact" className="btn-primary w-full">
+            <Link href={site.bookingPath} className="btn-primary w-full">
               Book a Free Strategy Call
             </Link>
           </div>

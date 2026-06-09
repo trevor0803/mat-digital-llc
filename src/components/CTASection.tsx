@@ -29,7 +29,10 @@ export default function CTASection({
             {body}
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Link href="/contact" className="btn-accent group w-full sm:w-auto">
+            <Link
+              href={site.bookingPath}
+              className="btn-accent group w-full sm:w-auto"
+            >
               Book a Free Strategy Call
               <ArrowRight
                 className="h-4 w-4 transition-transform group-hover:translate-x-0.5"

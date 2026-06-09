@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Quote } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
@@ -108,11 +109,17 @@ export default function AboutPage() {
             <Reveal
               key={person.name}
               delay={i * 90}
-              className="flex flex-col gap-5 rounded-3xl border border-teal-900/10 bg-white p-8 shadow-soft sm:flex-row sm:items-start"
+              className="flex flex-col gap-5 rounded-3xl border border-teal-900/10 bg-white p-6 shadow-soft sm:flex-row sm:items-start sm:p-7"
             >
-              <span className="inline-flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-teal-700 font-display text-xl font-extrabold text-cream-50 shadow-soft">
-                {person.initials}
-              </span>
+              <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-2xl bg-teal-700 shadow-soft ring-1 ring-teal-900/10">
+                <Image
+                  src={person.image}
+                  alt={`${person.name}, ${person.role} at MAT Digital`}
+                  fill
+                  sizes="112px"
+                  className="object-cover"
+                />
+              </div>
               <div>
                 <h3 className="font-display text-xl font-bold text-teal-950">
                   {person.name}
