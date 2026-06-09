@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MAT Digital LLC — Website
 
-## Getting Started
+The marketing website for **MAT Digital**, a boutique performance-marketing
+agency based in West Palm Beach, Florida. Built with the Next.js App Router,
+TypeScript, and Tailwind CSS.
 
-First, run the development server:
+> **Marketing That Scales. Strategy That Lasts.**
+
+## Tech stack
+
+- **Framework:** [Next.js 14](https://nextjs.org) (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS with a custom teal / cream / gold design system
+- **Icons:** [lucide-react](https://lucide.dev) (thin-line)
+- **Fonts:** Plus Jakarta Sans (display) + Inter (body) via `next/font`
+
+## Pages
+
+| Route       | Description                                                        |
+| ----------- | ----------------------------------------------------------------- |
+| `/`         | Home — hero, stats, services, differentiators, process, CTA       |
+| `/services` | Detailed breakdown of all six services + engagement model         |
+| `/about`    | Founder story, mission, the two founders, and core values         |
+| `/contact`  | Contact details + inquiry form (name / email / phone / message)   |
+
+Plus `sitemap.xml`, `robots.txt`, JSON-LD structured data, per-page Open Graph
+metadata, and a custom 404 page.
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Available scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run dev     # Start the dev server
+npm run build   # Production build
+npm run start   # Serve the production build
+npm run lint    # Run ESLint
+```
 
-## Learn More
+## Contact form
 
-To learn more about Next.js, take a look at the following resources:
+The contact form posts to `src/app/api/contact/route.ts`, which validates the
+submission and **logs the inquiry to the server console**. It is intentionally
+not wired to any third-party CRM.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To deliver leads somewhere real, replace the section marked
+`// TODO: webhook` in that route with a call to your email service, CRM, or
+webhook of choice.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project structure
 
-## Deploy on Vercel
+```
+src/
+├── app/
+│   ├── layout.tsx          # Root layout, fonts, metadata, JSON-LD
+│   ├── page.tsx            # Home
+│   ├── about/page.tsx
+│   ├── services/page.tsx
+│   ├── contact/page.tsx
+│   ├── api/contact/route.ts
+│   ├── sitemap.ts
+│   ├── robots.ts
+│   ├── not-found.tsx
+│   └── globals.css
+├── components/             # Header, Footer, ServiceCard, ContactForm, etc.
+└── lib/
+    └── site.ts             # Single source of truth for business content
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All business copy, services, stats, and contact info live in
+[`src/lib/site.ts`](src/lib/site.ts) — edit there to update the site.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Assets
+
+The MAT Digital logo lives in `public/assets/`. It was carried over from the
+original site.
+
+## Deployment
+
+Optimized for [Vercel](https://vercel.com). Before going live, update the
+canonical `url` in `src/lib/site.ts` if the production domain differs from
+`https://mat-digital.com`.
+
+---
+
+© 2026 MAT Digital LLC. All rights reserved.

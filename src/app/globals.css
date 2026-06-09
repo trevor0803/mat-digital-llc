@@ -3,25 +3,87 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f5ec;
+  --foreground: #142826;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: #1f636a;
+    color: #f7f5ec;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+  .container-narrow {
+    @apply mx-auto w-full max-w-3xl px-5 sm:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-tight transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-teal-600;
+  }
+  .btn-primary {
+    @apply btn bg-teal-700 text-cream-50 shadow-soft hover:bg-teal-800 hover:shadow-lift active:scale-[0.98];
+  }
+  .btn-accent {
+    @apply btn bg-gold-400 text-teal-950 shadow-soft hover:bg-gold-300 hover:shadow-lift active:scale-[0.98];
+  }
+  .btn-ghost {
+    @apply btn border border-teal-700/20 bg-transparent text-teal-800 hover:border-teal-700/40 hover:bg-teal-700/5;
+  }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-teal-600;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+  /* Scroll-in animation: hidden until revealed via IntersectionObserver */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(20, 40, 38, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(20, 40, 38, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
   }
 }
